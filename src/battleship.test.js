@@ -1,6 +1,6 @@
 import { Ship } from './ship';
 import { GameBoard } from './gameboard';
-import { Player } from './player';
+import { Player, Computer } from './player';
 
 //Ship object
 test('Ship: hit()', () => {
@@ -108,3 +108,29 @@ test('GameBoard: receiveAttack(), MISS', () => {
 
 //Player object
 
+test('Player: attack()', () => {
+    const board = new GameBoard();
+    board.buildBoard();
+    board.placeShip(4, 0, 0, 'H');
+
+
+    const ship = new Ship(4);
+    ship.hit();
+
+    const player1 = new Player();
+
+    expect(player1.attack(0,0, board)).toStrictEqual(
+        [
+            [ship, ship, ship, ship, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null, null, null],
+        ]
+    )
+})
